@@ -1,9 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Register = () => {
-  return (
-    <div>
+const SellerAccount = () => {
+    return (
       <div className="hero min-h-screen bg-base-200">
         <div className=" shadow-2xl bg-base-100">
           <form className="card-body">
@@ -53,21 +52,12 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn ">Create Account</button>
+              <button className="btn">Create Seller Account</button>
             </div>
           </form>
-          <div className="text-center flex justify-between items-center px-6 mb-6 gap-2">
-            <button className="btn  btn-sm ">
-              Google Login
-            </button>
-            <Link to="/selleraccount">
-              <button className="btn  btn-sm">Create Seller Account</button>
-            </Link>
-          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
-export default Register;
+export default SellerAccount;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import Footer from "../Footer/Footer";
 const Navbar = () => {
   const navlinks = (
     <>
@@ -8,6 +9,9 @@ const Navbar = () => {
       </li>
       <li>
         <Link to='/login'>Login</Link>
+      </li>
+      <li>
+        <Link to='/register'>Register</Link>
       </li>
     </>
   );
@@ -39,7 +43,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Outlet></Outlet>
+              <Outlet></Outlet>
+              <Footer></Footer>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
