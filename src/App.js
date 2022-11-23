@@ -4,7 +4,7 @@ import { route } from './routes/route/route';
 
 function App() {
   return (
-    <div className='max-w-screen-xl mx-auto font-serif'>
+    <div className='max-w-screen-xl mx-auto font-serif overflow-hidden'>
       <RouterProvider router={route}></RouterProvider>
     </div>
   );

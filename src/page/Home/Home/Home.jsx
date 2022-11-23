@@ -3,9 +3,11 @@ import Header from '../Header/Header';
 
 const Home = () => {
     return (
-        <div>
-            <Header></Header>
+      <div>
+        <div className="min-h-screen flex justify-center items-center">
+          <Header></Header>
         </div>
+      </div>
     );
 };
 
