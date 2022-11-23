@@ -11,6 +11,25 @@ const Register = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const registerUser = (data) => {
+    const img = data.image[0];
+    const formData = new FormData();
+    formData.append("image", img);
+
+    fetch(
+      `https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_ImgBB_Key}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.data?.image?.filename)
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     const updatedUserInfo = {
       displayName: data.name,
     };
@@ -56,6 +75,7 @@ const Register = () => {
                 <span className="label-text">Upload image</span>
               </label>
               <input
+                {...register("image")}
                 type="file"
                 name="image"
                 className="file-input file-input-bordered w-full max-w-xs"
