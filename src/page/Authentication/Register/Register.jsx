@@ -1,9 +1,14 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import loginLogo from "../../../assets/login.jpg";
 
 const Register = () => {
+  const { register, handleSubmit } = useForm();
+  const registerUser = (data) => {
+    console.log(data);
+  };
   return (
     <div className="grid md:grid-cols-2">
       <div>
@@ -11,16 +16,18 @@ const Register = () => {
       </div>
       <div className="hero">
         <div className="w-full">
-          <form className="card-body">
+          <form className="card-body" onSubmit={handleSubmit(registerUser)}>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Full Name</span>
               </label>
               <input
+                {...register("name")}
                 type="text"
                 placeholder="full name"
                 name="name"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -29,7 +36,9 @@ const Register = () => {
               </label>
               <input
                 type="file"
+                name="image"
                 className="file-input file-input-bordered w-full max-w-xs"
+                required
               />
             </div>
             <div className="form-control">
@@ -37,7 +46,9 @@ const Register = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                {...register("email")}
+                type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -47,8 +58,10 @@ const Register = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                {...register("password")}
+                type="password"
                 placeholder="password"
+                name="password"
                 className="input input-bordered"
               />
               <label className="label">

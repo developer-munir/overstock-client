@@ -1,21 +1,28 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import loginLogo from '../../../assets/login.jpg';
 
 const Login = () => {
+    const { register, handleSubmit } = useForm();
+    const loginUser = (data) => {
+      console.log(data);
+    };
   return (
     <div className="grid md:grid-cols-2">
       <div>
         <img src={loginLogo} alt="" className="w-full" />
       </div>
       <div className="hero">
-        <form className=" w-full">
+        <form className=" w-full" onSubmit={handleSubmit(loginUser)}>
           <div className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                {...register("email")}
+                              type="email"
+                              name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -25,14 +32,16 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                {...register("password")}
+                name='password'
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <p className="label-text-alt link link-hover">
                   Forgot password?
-                </a>
+                </p>
               </label>
             </div>
             <div className="form-control mt-6">
