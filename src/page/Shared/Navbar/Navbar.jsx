@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import Footer from "../Footer/Footer";
 const Navbar = () => {
+    const {  } = useContext(AuthContext);
   const navlinks = (
     <>
       <li>
