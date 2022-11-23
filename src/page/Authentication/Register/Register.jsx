@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import loginLogo from "../../../assets/login.jpg";
+import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 
 const Register = () => {
+  const { singUpUser, updateUserProfile } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const registerUser = (data) => {
-    console.log(data);
+    const updatedUserInfo = {
+      displayName: data.name,
+    };
+    singUpUser(data.email, data.password)
+      .then((result) => {
+        updateUserProfile(updatedUserInfo)
+          .then(() => {
+           
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+           console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
   return (
     <div className="grid md:grid-cols-2">

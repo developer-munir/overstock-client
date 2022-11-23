@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import loginLogo from '../../../assets/login.jpg';
+import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 
 const Login = () => {
+    const { loginUser } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
-    const loginUser = (data) => {
-      console.log(data);
+    const loginUserSubmit = (data) => {
+      loginUser(data.email,data.password)
+          .then(result => {
+          console.log(result.user)
+          })
+          .catch(error => {
+            console.error(error.message)
+        })
     };
   return (
     <div className="grid md:grid-cols-2">
@@ -13,7 +21,7 @@ const Login = () => {
         <img src={loginLogo} alt="" className="w-full" />
       </div>
       <div className="hero">
-        <form className=" w-full" onSubmit={handleSubmit(loginUser)}>
+        <form className=" w-full" onSubmit={handleSubmit(loginUserSubmit)}>
           <div className="card-body">
             <div className="form-control">
               <label className="label">
