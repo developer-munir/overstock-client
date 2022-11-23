@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 const Navbar = () => {
-    const navlinks = (
-      <>
-        <li>
-          <Link>Home</Link>
-        </li>
-        <li>
-          <Link>Login</Link>
-        </li>
-      </>
-    );
+  const navlinks = (
+    <>
+      <li>
+        <Link to='/'>Home</Link>
+      </li>
+      <li>
+        <Link to='/login'>Login</Link>
+      </li>
+    </>
+  );
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -35,18 +35,15 @@ const Navbar = () => {
           </div>
           <div className="flex-1 px-2 mx-2">Overstock.com</div>
           <div className="flex-none hidden lg:block">
-            <ul className="menu menu-horizontal">
-              {navlinks}
-            </ul>
+            <ul className="menu menu-horizontal">{navlinks}</ul>
           </div>
         </div>
-        content
+
+        <Outlet></Outlet>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-base-100">
-          {navlinks}
-        </ul>
+        <ul className="menu p-4 w-80 bg-base-100">{navlinks}</ul>
       </div>
     </div>
   );
