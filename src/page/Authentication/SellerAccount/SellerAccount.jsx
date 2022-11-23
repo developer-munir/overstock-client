@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 import loginLogo from "../../../assets/login.jpg";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 const SellerAccount = () => {
-    const { singUpUser, updateUserProfile } = useContext(AuthContext);
+  const { singUpUser, updateUserProfile } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const registerSellerAccount = (data) => {
     const updatedUserInfo = {
       displayName: data.name,
@@ -18,10 +20,13 @@ const SellerAccount = () => {
           .catch((error) => {
             console.log(error.message);
           });
+        toast.success("Register Successfull");
         console.log(result.user);
+        navigate("/");
       })
       .catch((error) => {
         console.error(error.message);
+        toast.error(error.message);
       });
   };
   return (
@@ -30,7 +35,10 @@ const SellerAccount = () => {
         <img src={loginLogo} alt="" className="w-full" />
       </div>
       <div className="w-full">
-        <form className="card-body" onSubmit={handleSubmit(registerSellerAccount)}>
+        <form
+          className="card-body"
+          onSubmit={handleSubmit(registerSellerAccount)}
+        >
           <div className="form-control">
             <label className="label">
               <span className="label-text">Full Name</span>

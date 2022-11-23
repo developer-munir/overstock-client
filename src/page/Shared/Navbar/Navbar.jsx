@@ -3,18 +3,31 @@ import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import Footer from "../Footer/Footer";
 const Navbar = () => {
-    const {  } = useContext(AuthContext);
+    const { user,logOutUser } = useContext(AuthContext);
+    const singout = () => {
+        logOutUser()
+        .then(()=>{})
+        .catch(error => console.log(error))
+    }
   const navlinks = (
     <>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-      <li>
-        <Link to='/register'>Register</Link>
-      </li>
+      {user?.uid ? (
+        <li>
+          <Link onClick={singout}>Logout</Link>
+        </li>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
