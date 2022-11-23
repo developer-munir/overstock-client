@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import loginLogo from "../../../assets/login.jpg";
 const SellerAccount = () => {
     return (
-      <div className="hero min-h-screen bg-base-200">
-        <div className=" shadow-2xl bg-base-100">
+      <div className="grid md:grid-cols-2">
+        <div>
+          <img src={loginLogo} alt="" className="w-full" />
+        </div>
+        <div className="w-full">
           <form className="card-body">
             <div className="form-control">
               <label className="label">
