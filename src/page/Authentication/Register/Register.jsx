@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import loginLogo from "../../../assets/login.jpg";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
@@ -11,6 +11,8 @@ const Register = () => {
   const { register, handleSubmit } = useForm();
   const [userImg, setUserImg] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   const registerUser = (data) => {
     const img = data.image[0];
     const formData = new FormData();
@@ -58,7 +60,7 @@ const Register = () => {
             console.log(data);
             if (data.acknowledged) {
               toast.success("Register Successfull");
-              navigate("/");
+              navigate(from, { replace: true });
             }
           })
           .catch((error) => {
