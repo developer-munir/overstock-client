@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Link } from "react-router-dom";
+import Spinner from "../../Shared/Spinner/Spinner";
 
 const Categories = () => {
-  const { data: categories = [] } = useQuery({
+  const { data: categories = [],isLoading } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/categories");
@@ -10,7 +12,9 @@ const Categories = () => {
       return data;
     },
   });
-  console.log(categories);
+    if (isLoading) {
+        return <Spinner></Spinner>
+    }
   return (
     <div>
       <h1 className="text-5xl uppercase text-center mb-6">categories</h1>
@@ -18,7 +22,9 @@ const Categories = () => {
         {categories?.map((categorie) => (
           <div className="border p-6" key={categorie?._id}>
             <h1 className="text-3xl">{categorie?.category_name}</h1>
-            <button className="btn btn-sm my-3">see products</button>
+            <Link to={`/categories/${categorie?.category_id}`}>
+              <button className="btn btn-sm my-3">see products</button>
+            </Link>
           </div>
         ))}
       </div>
