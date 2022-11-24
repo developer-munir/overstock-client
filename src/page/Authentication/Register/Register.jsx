@@ -9,12 +9,12 @@ import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 const Register = () => {
   const { singUpUser, updateUserProfile } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
+  const [userImg, setUserImg] = useState(null);
   const navigate = useNavigate();
   const registerUser = (data) => {
     const img = data.image[0];
     const formData = new FormData();
     formData.append("image", img);
-
     fetch(
       `https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_ImgBB_Key}`,
       {
@@ -24,14 +24,14 @@ const Register = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data?.image?.filename)
-        
+        setUserImg(data.data?.image?.url);
       })
       .catch((error) => {
         console.log(error);
       });
     const updatedUserInfo = {
       displayName: data.name,
+      photoURL: userImg,
     };
     singUpUser(data.email, data.password)
       .then((result) => {

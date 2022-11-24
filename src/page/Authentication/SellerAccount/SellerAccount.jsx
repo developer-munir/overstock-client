@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,11 +7,30 @@ import loginLogo from "../../../assets/login.jpg";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 const SellerAccount = () => {
   const { singUpUser, updateUserProfile } = useContext(AuthContext);
+  const [userImg, setUserImg] = useState(null);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const registerSellerAccount = (data) => {
+    const img = data.image[0];
+    const formData = new FormData();
+    formData.append("image", img);
+    fetch(
+      `https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_ImgBB_Key}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setUserImg(data.data?.image?.url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     const updatedUserInfo = {
       displayName: data.name,
+      photoURL: userImg,
     };
     singUpUser(data.email, data.password)
       .then((result) => {
@@ -57,7 +76,9 @@ const SellerAccount = () => {
               <span className="label-text">Upload image</span>
             </label>
             <input
+              {...register("image")}
               type="file"
+              name="image"
               className="file-input file-input-bordered w-full max-w-xs"
               required
             />
