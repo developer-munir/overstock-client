@@ -32,6 +32,12 @@ const SellerAccount = () => {
       displayName: data.name,
       photoURL: userImg,
     };
+    const userInfoForDb = {
+      name: data.name,
+      email: data.email,
+      image: userImg,
+      role: "seller",
+    };
     singUpUser(data.email, data.password)
       .then((result) => {
         updateUserProfile(updatedUserInfo)
@@ -39,9 +45,25 @@ const SellerAccount = () => {
           .catch((error) => {
             console.log(error.message);
           });
-        toast.success("Register Successfull");
-        console.log(result.user);
-        navigate("/");
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfoForDb),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.acknowledged) {
+              toast.success("Register Successfull");
+              navigate("/");
+            } 
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        console.log(result.user)
       })
       .catch((error) => {
         console.error(error.message);
