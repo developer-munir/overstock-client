@@ -5,7 +5,9 @@ import Login from "../../page/Authentication/Login/Login";
 import Register from "../../page/Authentication/Register/Register";
 import SellerAccount from "../../page/Authentication/SellerAccount/SellerAccount";
 import CategoryProducts from "../../page/Categories/CategoryProducts/CategoryProducts";
+import Buyers from "../../page/Dashboard/Buyers/Buyers";
 import Dashboard from "../../page/Dashboard/Dashboard/Dashboard";
+import Users from "../../page/Dashboard/Users/Users";
 import Error from "../../page/Error/Error";
 import Home from "../../page/Home/Home/Home";
 import PrivateRouter from "../privateRouter/PrivateRouter";
@@ -52,7 +54,11 @@ export const route = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <Users></Users>,
+      },
+      {
+        path: "/dashboard/buyers",
+        element: <Buyers></Buyers>,
       },
     ],
   },
