@@ -32,15 +32,15 @@ const CategoryCard = ({ product }) => {
         <h2 className="card-title">{title}</h2>
         <small>Location : {location}</small>
         <div className="flex items-center font-mono">
-          <small className="text-xl mr-6">$ {resale_price}</small>
+          <small className="text-xl mr-6">${resale_price}</small>
           <small className="flex items-center relative right-16 ">
-            <hr className="w-[70px] relative left-16 border-red-600 border-2" />
-            <span className="text-3xl ">{buying_price}</span>
+            <hr className="w-[80px] relative left-20 border-red-600 border-2" />
+            <span className="text-3xl ">${buying_price}</span>
           </small>
         </div>
         <div className="font-mono">
           <h1>Used Time: {Year_of_uses}</h1>
-          <h1>Post Time : {the_time_it_posted}</h1>
+          <h1>Post Time : {the_time_it_posted} P.M</h1>
         </div>
         <div className="card-actions">
           <button className="btn">Buy Now</button>
