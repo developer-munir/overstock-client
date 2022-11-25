@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { Link } from "react-router-dom";
 import Spinner from "../../Shared/Spinner/Spinner";
+import SingleCategory from "./SingleCategory";
 
 const Categories = () => {
   const { data: categories = [],isLoading } = useQuery({
@@ -16,16 +16,14 @@ const Categories = () => {
         return <Spinner></Spinner>
     }
   return (
-    <div>
-      <h1 className="text-5xl uppercase text-center mb-6">categories</h1>
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6 text-center">
+    <div className="px-12">
+      <h1 className="text-3xl  uppercase  mb-6">All categories</h1>
+      <div className="grid md:grid-cols-3 gap-4 mb-6 text-center ">
         {categories?.map((categorie) => (
-          <div className="border p-6" key={categorie?._id}>
-            <h1 className="text-3xl">{categorie?.category_name}</h1>
-            <Link to={`/categories/${categorie?.category_id}`}>
-              <button className="btn btn-sm my-3">see products</button>
-            </Link>
-          </div>
+          <SingleCategory
+            key={categorie?._id}
+            categorie={categorie}
+          ></SingleCategory>
         ))}
       </div>
     </div>

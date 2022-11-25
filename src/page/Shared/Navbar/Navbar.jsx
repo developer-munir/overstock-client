@@ -12,25 +12,25 @@ const Navbar = () => {
     }
   const navlinks = (
     <>
-      <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
+      <li className="hover:bg-red-400 hover:text-[#CAD5E2]">
         <Link to="/">Home</Link>
       </li>
 
       {user?.uid ? (
         <>
-          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
+          <li className="hover:bg-red-400 hover:text-[#CAD5E2]">
             <Link to="/dashboard">Dashboard</Link>
           </li>
-          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
+          <li className="hover:bg-red-400 hover:text-[#CAD5E2]">
             <Link onClick={singout}>Logout</Link>
           </li>
         </>
       ) : (
         <>
-          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
+          <li className="hover:bg-red-400 hover:text-[#CAD5E2]">
             <Link to="/login">Login</Link>
           </li>
-          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
+          <li className="hover:bg-red-400 hover:text-[#CAD5E2]">
             <Link to="/register">Register</Link>
           </li>
         </>

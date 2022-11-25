@@ -7,12 +7,13 @@ const Header = () => {
       id="carouselExampleSlidesOnly"
       className="carousel slide relative lg:h-[600px]"
       data-bs-ride="carousel"
+      data-aos="zoom-in"
     >
       <div className="carousel-inner relative w-full overflow-hidden">
         <div className="carousel-item active relative float-left w-full">
           <img
             src="https://images.unsplash.com/photo-1544099858-75feeb57f01b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-            className="w-full "
+            className="w-full bg-gradient-to-r from-cyan-500 to-blue-500"
             alt="Wild Landscape"
           />
         </div>
