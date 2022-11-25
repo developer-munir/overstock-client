@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import Footer from "../Footer/Footer";
+import { AiOutlineLaptop } from "react-icons/ai";
 const Navbar = () => {
     const { user,logOutUser } = useContext(AuthContext);
     const singout = () => {
@@ -11,37 +12,36 @@ const Navbar = () => {
     }
   const navlinks = (
     <>
-      <li>
+      <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
         <Link to="/">Home</Link>
       </li>
-      
+
       {user?.uid ? (
         <>
-          <li>
+          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
             <Link to="/dashboard">Dashboard</Link>
           </li>
-          <li>
+          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
             <Link onClick={singout}>Logout</Link>
           </li>
         </>
       ) : (
         <>
-          <li>
+          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
             <Link to="/login">Login</Link>
           </li>
-          <li>
+          <li className="hover:bg-[#CAD5E2] hover:text-[#383CC1]">
             <Link to="/register">Register</Link>
           </li>
         </>
       )}
-      
     </>
   );
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col">
-        <div className="w-full navbar bg-base-300">
+      <div className="drawer-content flex flex-col ">
+        <div className="w-full navbar bg-[#383CC1] text-[#CAD5E2] py-16">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
               <svg
@@ -59,9 +59,12 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div className="flex-1 px-2 mx-2">Overstock.com</div>
+          <div className="flex-1 px-2 mx-2 ">
+            <AiOutlineLaptop className="text-5xl"></AiOutlineLaptop>
+            <span className="text-3xl title-nav">Overstock.com</span>
+          </div>
           <div className="flex-none hidden lg:block">
-            <ul className="menu menu-horizontal">{navlinks}</ul>
+            <ul className="menu menu-horizontal ">{navlinks}</ul>
           </div>
           <label
             htmlFor="my-drawer-2"
@@ -81,7 +84,6 @@ const Navbar = () => {
               ></path>
             </svg>
           </label>
-         
         </div>
 
         <Outlet></Outlet>

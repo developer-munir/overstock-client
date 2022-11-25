@@ -7,7 +7,7 @@ import { route } from "./routes/route/route";
 function App() {
   const queryClient = new QueryClient();
   return (
-    <div className="max-w-screen-xl mx-auto font-serif overflow-hidden">
+    <div className="max-w-screen-xl mx-auto font-serif overflow-hidden app">
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={route}></RouterProvider>
         <Toaster />

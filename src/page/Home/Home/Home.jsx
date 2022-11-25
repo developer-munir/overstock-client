@@ -5,10 +5,12 @@ import Header from '../Header/Header';
 const Home = () => {
     return (
       <div>
-        <div className="min-h-screen flex justify-center items-center">
+        <div >
           <Header></Header>
         </div>
-        <Categories></Categories>
+        <div className='py-[5%]'>
+          <Categories></Categories>
+        </div>
       </div>
     );
 };

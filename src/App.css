@@ -1,12 +1,34 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap');
 
+.App {
+  font-family: 'Frank Ruhl Libre', serif;
+}
+.bg-color-my{
+  background-color: #383CC1;
+}
+.text-color-my{
+  color: #CAD5E2;
+}
+.overlayCSS::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: red;
+    opacity: .6;
+    /* !!! */
+    z-index: -1;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.title-nav {
+  font-family: "Pacifico", cursive;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

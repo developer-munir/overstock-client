@@ -33,9 +33,12 @@ const CategoryCard = ({ product }) => {
         <small>Location : {location}</small>
         <div className="flex items-center font-mono">
           <small className="text-xl mr-6">${resale_price}</small>
-          <small className="flex items-center relative right-16 ">
-            <hr className="w-[80px] relative left-20 border-red-600 border-2" />
-            <span className="text-3xl ">${buying_price}</span>
+          <small className="flex items-center right-16 ">
+            <span
+              className="text-3xl font-semibold  text-red-600 line-through"
+            >
+              ${buying_price}
+            </span>
           </small>
         </div>
         <div className="font-mono">
@@ -43,7 +46,7 @@ const CategoryCard = ({ product }) => {
           <h1>Post Time : {the_time_it_posted} P.M</h1>
         </div>
         <div className="card-actions">
-          <button className="btn">Buy Now</button>
+          <button className="btn">Book Now</button>
         </div>
       </div>
     </div>
