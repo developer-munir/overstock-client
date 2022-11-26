@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
-import PrimaryBtn from "../../Shared/Buttons/PrimaryBtn";
 
 const Users = () => {
   const { data, refetch } = useQuery({

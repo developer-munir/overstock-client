@@ -13,15 +13,25 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const loginUserSubmit = (data) => {
     loginUser(data.email, data.password)
-      .then((result) => {
-        console.log(result.user);
-        toast.success("login successfully");
-        navigate(from, { replace: true });
+      .then(() => {
+        getAccessToken(data.email);
       })
       .catch((error) => {
         console.error(error.message);
         toast.error(error.message);
       });
+  };
+  const getAccessToken = (email) => {
+    fetch(`http://localhost:5000/jwt?email=${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.accessToken) {
+          localStorage.setItem('accessToken', data.accessToken);
+          toast.success("login successfully");
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="grid md:grid-cols-2">
