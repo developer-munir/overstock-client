@@ -1,23 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 
-const BookingModal = ({ title }) => {
+const BookingModal = ({ title, price }) => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
-
+  const [data, setData] = useState(null);
   const registerUser = (data) => {
     const number = data.number;
     const location = data.location;
     const bookingInfo = {
       email: user.email,
       name: user.displayName,
+      price,
       itemName: title,
       number,
       location,
     };
     console.log(bookingInfo);
+    setData(bookingInfo);
   };
+
   return (
     <div>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -43,30 +46,42 @@ const BookingModal = ({ title }) => {
                   </div>
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Product Name</span>
+                      <span className="label-text">Email</span>
                     </label>
                     <input
-                      {...register("itemname")}
                       type="text"
                       name="itemname"
-                      placeholder={title}
+                      placeholder={user?.email}
                       readOnly
                       className="input input-bordered"
                     />
                   </div>
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input
-                    {...register("email")}
-                    type="email"
-                    name="email"
-                    placeholder={user?.email}
-                    readOnly
-                    className="input input-bordered"
-                  />
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Product Name</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder={title}
+                      readOnly
+                      className="input input-bordered"
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder={price}
+                      readOnly
+                      className="input input-bordered"
+                    />
+                  </div>
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -93,11 +108,12 @@ const BookingModal = ({ title }) => {
                   />
                 </div>
                 <div className="modal-action">
-                  <input
-                    type="submit"
-                    value="Submit"
+                  <label
+                    htmlFor="booking-modal"
                     className="text-color-my bg-color-my py-3 px-6 font-semibold hover:bg-red-400"
-                  />
+                  >
+                    <button type="sumbit">Submit</button>
+                  </label>
                 </div>
               </form>
             </div>

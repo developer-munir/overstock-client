@@ -49,7 +49,10 @@ const CategoryCard = ({ product }) => {
           <h1>Post Date : 21/11/2022</h1>
         </div>
         <div className="card-actions mt-3">
-          <BookingModal title={title}></BookingModal>
+          <BookingModal
+            title={title}
+            price={resale_price}
+          ></BookingModal>
           <label
             htmlFor="booking-modal"
             className="text-color-my bg-color-my py-3 px-6 font-semibold hover:bg-red-400"
