@@ -37,7 +37,7 @@ const DashboardNavbar = () => {
       </>
     );
     return (
-      <div className="navbar">
+      <div className="navbar bg-[#03203C] text-[#CAD5E2]">
         <div className="flex-1">
           <label
             htmlFor="my-drawer-2"
@@ -59,9 +59,7 @@ const DashboardNavbar = () => {
           </label>
         </div>
         <div className="flex-none">
-          <ul className="menu menu-horizontal p-0">
-            {navlinks}
-          </ul>
+          <ul className="menu menu-horizontal p-0">{navlinks}</ul>
         </div>
       </div>
     );

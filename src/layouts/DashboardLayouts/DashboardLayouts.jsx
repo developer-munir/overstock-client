@@ -17,9 +17,9 @@ const DashboardLayouts = () => {
     <div>
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content px-4">
+        <div className="drawer-content lg:px-4">
           <DashboardNavbar></DashboardNavbar>
-          <div className="min-h-screen my-3">
+          <div className="min-h-screen p-8">
             <Outlet></Outlet>
           </div>
           <Footer></Footer>

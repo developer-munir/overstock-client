@@ -61,6 +61,10 @@ export const route = createBrowserRouter([
     errorElement: <Error></Error>,
     children: [
       {
+        path: '/dashboard',
+        element:<Dashboard></Dashboard>
+    },
+      {
         path: "/dashboard/users",
         element: (
           <AdminRouter>
@@ -71,17 +75,17 @@ export const route = createBrowserRouter([
       {
         path: "/dashboard/myorders",
         element: (
-          <BuyerRouter>
             <MyOrders></MyOrders>
-          </BuyerRouter>
+          // <BuyerRouter>
+          // </BuyerRouter>
         ),
       },
       {
         path: "/dashboard/addproduct",
         element: (
-          <SellerRouter>
             <AddAProduct></AddAProduct>
-          </SellerRouter>
+          // <SellerRouter>
+          // </SellerRouter>
         ),
       },
     ],

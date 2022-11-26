@@ -15,7 +15,7 @@ function App() {
   return (
     <div
       className="max-w-screen-xl mx-auto font-serif overflow-hidden app text-[#03203C] "
-      data-theme="light"
+    data-theme="light"
     >
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={route}></RouterProvider>
