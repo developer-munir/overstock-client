@@ -13,7 +13,10 @@ function App() {
    }, []);
   const queryClient = new QueryClient();
   return (
-    <div className="max-w-screen-xl mx-auto font-serif overflow-hidden app bg-color-my text-color-my">
+    <div
+      className="max-w-screen-xl mx-auto font-serif overflow-hidden app "
+      data-theme="light"
+    >
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={route}></RouterProvider>
         <Toaster />

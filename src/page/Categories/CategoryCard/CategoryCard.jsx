@@ -1,6 +1,7 @@
 import React from "react";
 import PrimaryBtn from "../../Shared/Buttons/PrimaryBtn";
 
+import { GrStatusGood, GrStatusCritical } from "react-icons/gr";
 const CategoryCard = ({ product }) => {
   const {
     _id,
@@ -25,24 +26,24 @@ const CategoryCard = ({ product }) => {
       <figure>
         <img src={picture} alt="" className="" />
       </figure>
-      <div className="card-body bg-[#CAD5E2] text-zinc-800">
-        <div className="flex items-center">
-          <h1 className="text-lg mr-5">{Seller_name}</h1>
-          <small className="text-[11px]">{Verified}</small>
-        </div>
+      <div className="card-body ">
         <h2 className="card-title">{title}</h2>
-        <small>Location : {location}</small>
-        <div className="flex items-center ">
+        <div className="flex items-center">
+          <h1 className="mr-3">{Seller_name}</h1>
+          <small className=""><GrStatusGood></GrStatusGood></small>
+        </div>
+        <small className="text-zinc-500">Location : {location}</small>
+        <div className="flex items-center font-mono text-zinc-600">
           <small className="text-xl mr-6">${resale_price}</small>
           <small className="flex items-center right-16 ">
-            <span className="text-3xl font-semibold  text-red-600 line-through">
+            <span className="text-3xl  text-red-600 line-through">
               ${buying_price}
             </span>
           </small>
         </div>
-        <div className="font-mono">
-          <h1>Used Time: {Year_of_uses}</h1>
-          <h1>Post Time : {the_time_it_posted} P.M</h1>
+        <div className="font-mono text-zinc-600">
+          <h1>Years of use: {Year_of_uses}</h1>
+          <h1>Post Date : 21/11/2022</h1>
         </div>
         <div className="card-actions">
           <PrimaryBtn>Book Now</PrimaryBtn>

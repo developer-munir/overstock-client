@@ -41,7 +41,7 @@ const Navbar = () => {
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col ">
-        <div className="w-full navbar bg-[#383CC1] text-[#CAD5E2] py-16">
+        <div className="w-full navbar shadow-2xl py-16">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
               <svg

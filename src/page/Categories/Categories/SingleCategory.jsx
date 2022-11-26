@@ -6,8 +6,8 @@ import { AiOutlineLaptop } from "react-icons/ai";
 
 const SingleCategory = ({ categorie }) => {
   return (
-    <div className=" h-[300px] shadow-x bg-[#CAD5E2] p-4 color-my">
-      <div className="text-2xl color-my mb-3 border-b border-b-[#383CC1] py-3 flex justify-center items-center">
+    <div className=" h-[300px] shadow-xl p-4 border">
+      <div className="text-2xl mb-3 border-b  py-3 flex justify-center items-center">
         <span>
           <AiOutlineLaptop></AiOutlineLaptop>
         </span>

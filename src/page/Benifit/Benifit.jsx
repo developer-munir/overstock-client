@@ -4,7 +4,7 @@ import PrimaryBtn from "../Shared/Buttons/PrimaryBtn";
 const Benifit = () => {
   return (
     <div>
-      <div className=" grid md:grid-cols-2">
+      <div className=" grid md:grid-cols-2 shadow-xl">
         <div>
           <img
             src="https://images.pexels.com/photos/840996/pexels-photo-840996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -13,7 +13,7 @@ const Benifit = () => {
           />
         </div>
 
-        <div className="bg-[#CAD5E2]  p-4 text-zinc-800">
+        <div className=" p-4">
           <h5>BENEFITS</h5>
           <h1 className="text-4xl font-bold">
             Why Choose Overstock.com For Your Device?
