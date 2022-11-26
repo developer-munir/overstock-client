@@ -5,8 +5,10 @@ import Login from "../../page/Authentication/Login/Login";
 import Register from "../../page/Authentication/Register/Register";
 import SellerAccount from "../../page/Authentication/SellerAccount/SellerAccount";
 import CategoryProducts from "../../page/Categories/CategoryProducts/CategoryProducts";
+import AddAProduct from "../../page/Dashboard/AddAProduct/AddAProduct";
 import Buyers from "../../page/Dashboard/Buyers/Buyers";
 import Dashboard from "../../page/Dashboard/Dashboard/Dashboard";
+import MyOrders from "../../page/Dashboard/MyOrders/MyOrders";
 import Users from "../../page/Dashboard/Users/Users";
 import Error from "../../page/Error/Error";
 import Home from "../../page/Home/Home/Home";
@@ -49,7 +51,11 @@ export const route = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayouts></DashboardLayouts>,
+    element: (
+      <PrivateRouter>
+        <DashboardLayouts></DashboardLayouts>
+      </PrivateRouter>
+    ),
     errorElement: <Error></Error>,
     children: [
       {
@@ -57,8 +63,12 @@ export const route = createBrowserRouter([
         element: <Users></Users>,
       },
       {
-        path: "/dashboard/buyers",
-        element: <Buyers></Buyers>,
+        path: "/dashboard/myorders",
+        element: <MyOrders></MyOrders>,
+      },
+      {
+        path: "/dashboard/addaproduct",
+        element: <AddAProduct></AddAProduct>,
       },
     ],
   },
