@@ -30,55 +30,56 @@ const Users = () => {
   };
   return (
     <div className="overflow-x-auto w-full">
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th>Users Info</th>
-            <th>Position</th>
-            <th>Admin Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((user) => (
-            <tr className="border" key={user?._id}>
-              <td className="border">
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img src={user?.image} alt="" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">{user?.name}</div>
-                    <div className="text-sm opacity-50">{user?.email}</div>
-                  </div>
+      <div className="grid grid-cols-3 text-center">
+        <div className="border p-2">
+          <h1>Users Info</h1>
+        </div>
+        <div className="border p-2">
+          <h1>Position</h1>
+        </div>
+        <div className="border p-2">
+          <h1>Admin Role</h1>
+        </div>
+      </div>
+
+      {data?.map((user) => (
+        <div className="grid grid-cols-2 lg:grid-cols-3 text-center my-3 shadow-lg" key={user?._id}>
+          <div className="border p-2">
+            <div className="flex items-center space-x-3">
+              <div className="avatar">
+                <div className="mask mask-squircle w-12 h-12">
+                  <img src={user?.image} alt="" />
                 </div>
-              </td>
-              <td className="border">
-                {user?.role}
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  Desktop Support Technician
-                </span>
-              </td>
-              <td className="border">
-                {user?.role === "admin" ? (
-                  <button className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400">
-                    Remove Admin{" "}
-                  </button>
-                ) : (
-                  <button
-                    className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400"
-                    onClick={() => handleMakeAdmin(user?._id)}
-                  >
-                    Make Admin
-                  </button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              </div>
+              <div>
+                <div className="font-bold">{user?.name}</div>
+                <div className="text-sm opacity-50">{user?.email}</div>
+              </div>
+            </div>
+          </div>
+          <div className="border p-2">
+            {user?.role}
+            <br />
+            <span className="badge badge-ghost badge-sm">
+              Desktop Support Technician
+            </span>
+          </div>
+          <div className="border p-2">
+            {user?.role === "admin" ? (
+              <button className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400">
+                Remove Admin{" "}
+              </button>
+            ) : (
+              <button
+                className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400"
+                onClick={() => handleMakeAdmin(user?._id)}
+              >
+                Make Admin
+              </button>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
