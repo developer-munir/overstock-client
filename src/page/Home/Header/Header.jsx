@@ -24,7 +24,7 @@ const Header = () => {
             alt="Exotic Fruits"
           />
         </div>
-        <div class="carousel-caption  absolute text-center lg:bottom-[200px]">
+        <div className="carousel-caption  absolute text-center lg:bottom-[200px]">
           <div className="">
             <h1 className="text-2xl md:text-6xl my-2">
               Overstock - Fashion Store Resle Laptops

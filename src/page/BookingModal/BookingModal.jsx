@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 
 const BookingModal = ({ title, price }) => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
-  const [data, setData] = useState(null);
   const registerUser = (data) => {
     const number = data.number;
     const location = data.location;
@@ -17,8 +17,20 @@ const BookingModal = ({ title, price }) => {
       number,
       location,
     };
-    console.log(bookingInfo);
-    setData(bookingInfo);
+    fetch("http://localhost:5000/bookings", {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Booking Successfully");
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -108,12 +120,15 @@ const BookingModal = ({ title, price }) => {
                   />
                 </div>
                 <div className="modal-action">
-                  <label
-                    htmlFor="booking-modal"
-                    className="text-color-my bg-color-my py-3 px-6 font-semibold hover:bg-red-400"
-                  >
-                    <button type="sumbit">Submit</button>
-                  </label>
+                  <button type="sumbit">
+                    <label
+                      htmlFor="booking-modal"
+                      className="text-color-my bg-color-my py-3 px-6 font-semibold hover:bg-red-400"
+                    >
+
+                    Submit
+                    </label>
+                  </button>
                 </div>
               </form>
             </div>
