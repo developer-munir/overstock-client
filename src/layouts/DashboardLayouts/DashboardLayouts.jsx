@@ -2,13 +2,17 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
+import useBuyer from "../../hooks/useBuyer";
+import useSeller from "../../hooks/useSeller";
 import DashboardNavbar from "../../page/Dashboard/DashboardNavbar/DashboardNavbar";
 import Footer from "../../page/Shared/Footer/Footer";
 
 const DashboardLayouts = () => {
   const { user } = useContext(AuthContext);
-  console.log(user)
-  const [isAdmin] = useAdmin(user?.email)
+  const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
+  console.log(isBuyer);
   return (
     <div>
       <div className="drawer drawer-mobile">
@@ -26,17 +30,24 @@ const DashboardLayouts = () => {
             {isAdmin && (
               <>
                 <li>
-                  <Link to="/dashboard">All sellers</Link>
+                  <Link to="/dashboard/users">All sellers</Link>
                 </li>
               </>
             )}
-
-            <li>
-              <Link to="/dashboard/addaproduct">Add a product</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/myorders">My orders</Link>
-            </li>
+            {isSeller && (
+              <>
+                <li>
+                  <Link to="/dashboard/addproduct">Add a product</Link>
+                </li>
+              </>
+            )}
+            {isBuyer && (
+              <>
+                <li>
+                  <Link to="/dashboard/myorders">My orders</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

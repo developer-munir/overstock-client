@@ -12,8 +12,10 @@ import MyOrders from "../../page/Dashboard/MyOrders/MyOrders";
 import Users from "../../page/Dashboard/Users/Users";
 import Error from "../../page/Error/Error";
 import Home from "../../page/Home/Home/Home";
+import AdminRouter from "../privateRouter/AdminRouter";
+import BuyerRouter from "../privateRouter/BuyerRouter";
 import PrivateRouter from "../privateRouter/PrivateRouter";
-
+import SellerRouter from "../privateRouter/SellerRouter";
 
 export const route = createBrowserRouter([
   {
@@ -59,16 +61,28 @@ export const route = createBrowserRouter([
     errorElement: <Error></Error>,
     children: [
       {
-        path: "/dashboard",
-        element: <Users></Users>,
+        path: "/dashboard/users",
+        element: (
+          <AdminRouter>
+            <Users></Users>
+          </AdminRouter>
+        ),
       },
       {
         path: "/dashboard/myorders",
-        element: <MyOrders></MyOrders>,
+        element: (
+          <BuyerRouter>
+            <MyOrders></MyOrders>
+          </BuyerRouter>
+        ),
       },
       {
-        path: "/dashboard/addaproduct",
-        element: <AddAProduct></AddAProduct>,
+        path: "/dashboard/addproduct",
+        element: (
+          <SellerRouter>
+            <AddAProduct></AddAProduct>
+          </SellerRouter>
+        ),
       },
     ],
   },
