@@ -7,6 +7,7 @@ import Footer from "../../page/Shared/Footer/Footer";
 
 const DashboardLayouts = () => {
   const { user } = useContext(AuthContext);
+  console.log(user)
   const [isAdmin] = useAdmin(user?.email)
   return (
     <div>
