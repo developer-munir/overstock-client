@@ -16,6 +16,7 @@ const SingleCategory = ({ categorie }) => {
       <p className="mb-3 text-zinc-500">{categorie?.details}</p>
       <Link to={`/categories/${categorie?.category_id}`}>
         <PrimaryBtn>See Products</PrimaryBtn>
+
       </Link>
     </div>
   );

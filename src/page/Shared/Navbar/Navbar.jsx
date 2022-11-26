@@ -85,8 +85,9 @@ const Navbar = () => {
             </svg>
           </label>
         </div>
-
-        <Outlet></Outlet>
+        <div>
+          <Outlet></Outlet>
+        </div>
         <Footer></Footer>
       </div>
       <div className="drawer-side">

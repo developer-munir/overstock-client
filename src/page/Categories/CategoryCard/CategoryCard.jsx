@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import PrimaryBtn from "../../Shared/Buttons/PrimaryBtn";
 
 import { GrStatusGood, GrStatusCritical } from "react-icons/gr";
+import BookingModal from "../../BookingModal/BookingModal";
 const CategoryCard = ({ product }) => {
   const {
     _id,
@@ -30,7 +31,9 @@ const CategoryCard = ({ product }) => {
         <h2 className="card-title">{title}</h2>
         <div className="flex items-center">
           <h1 className="mr-3">{Seller_name}</h1>
-          <small className=""><GrStatusGood></GrStatusGood></small>
+          <small className="">
+            <GrStatusGood></GrStatusGood>
+          </small>
         </div>
         <small className="text-zinc-500">Location : {location}</small>
         <div className="flex items-center font-mono text-zinc-600">
@@ -45,8 +48,14 @@ const CategoryCard = ({ product }) => {
           <h1>Years of use: {Year_of_uses}</h1>
           <h1>Post Date : 21/11/2022</h1>
         </div>
-        <div className="card-actions">
-          <PrimaryBtn>Book Now</PrimaryBtn>
+        <div className="card-actions mt-3">
+          <BookingModal title={title}></BookingModal>
+          <label
+            htmlFor="booking-modal"
+            className="text-color-my bg-color-my py-3 px-6 font-semibold hover:bg-red-400"
+          >
+            Booking Now
+          </label>
         </div>
       </div>
     </div>
