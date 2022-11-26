@@ -13,19 +13,19 @@ const Benifit = () => {
           />
         </div>
 
-        <div className=" p-4">
+        <div className=" p-4 text-[#03203C]">
           <h5>BENEFITS</h5>
           <h1 className="text-4xl font-bold">
             Why Choose Overstock.com For Your Device?
           </h1>
-          <p className="py-6">
+          <p className="py-6 text-zinc-400">
             Authentic marketing is not the art of selling what you make but
             knowing what to make. It is the art of identifying and understanding
             customer needs and creating solutions that deliver satisfaction to
             the customers, profits to the producers and benefits for the
             stakeholders.
           </p>
-          <div className="mb-3">
+          <div className="mb-3 ">
             <div className="flex items-center ">
               <GrStatusGood></GrStatusGood>
               <span className="ml-2">

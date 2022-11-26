@@ -1,19 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap");
 
 .App {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
 }
-.bg-color-my{
-  background-color: #383CC1;
+.bg-color-my {
+  background-color: #383cc1;
 }
-.color-my{
-  color: #383CC1;
+.color-my {
+  color: #383cc1;
 }
-.text-color-my{
-  color: #CAD5E2;
+.text-color-my {
+  color: #cad5e2;
 }
-
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.7s ease;
+  background-color: #339c57;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

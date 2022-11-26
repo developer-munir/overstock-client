@@ -103,7 +103,7 @@ const Register = () => {
                 {...register("image")}
                 type="file"
                 name="image"
-                className="file-input file-input-bordered w-full max-w-xs"
+                className=""
                 required
               />
             </div>
@@ -137,13 +137,19 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn ">Create Account</button>
+              <button className="bg-[#03203C] text-color-my py-3">
+                Create Account
+              </button>
             </div>
           </form>
           <div className=" mb-6 gap-2">
-            <button className="btn  btn-sm mr-6 ml-8">Google Login</button>
+            <button className="bg-[#03203C] text-color-my py-3 px-6 mr-6 ml-8">
+              Google Login
+            </button>
             <Link to="/selleraccount">
-              <button className="btn  btn-sm">Create Seller Account</button>
+              <button className="bg-[#03203C] text-color-my py-3 px-6">
+                Create Seller Account
+              </button>
             </Link>
           </div>
         </div>

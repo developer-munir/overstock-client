@@ -103,7 +103,7 @@ const SellerAccount = () => {
               {...register("image")}
               type="file"
               name="image"
-              className="file-input file-input-bordered w-full max-w-xs"
+              className=""
               required
             />
           </div>
@@ -138,7 +138,9 @@ const SellerAccount = () => {
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn">Create Seller Account</button>
+            <button className="py-3 bg-[#03203C] text-color-my">
+              Create Seller Account
+            </button>
           </div>
         </form>
       </div>
