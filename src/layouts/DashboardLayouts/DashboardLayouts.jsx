@@ -8,7 +8,7 @@ const DashboardLayouts = () => {
     <div>
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content p-2">
+        <div className="drawer-content px-4">
           <DashboardNavbar></DashboardNavbar>
           <div className="min-h-screen my-3">
             <Outlet></Outlet>
