@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import loginLogo from "../../../assets/login.jpg";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
@@ -11,10 +12,17 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const [userEmail, setUserEmail] = useState("");
+  const [token] = useToken(userEmail);
+  if (token) {
+    toast.success("Register Successfull");
+    navigate(from, { replace: true });
+  }
   const loginUserSubmit = (data) => {
     loginUser(data.email, data.password)
       .then(() => {
         getAccessToken(data.email);
+        setUserEmail(data.email);
       })
       .catch((error) => {
         console.error(error.message);
@@ -27,8 +35,6 @@ const Login = () => {
       .then((data) => {
         if (data.accessToken) {
           localStorage.setItem('accessToken', data.accessToken);
-          toast.success("login successfully");
-          navigate(from, { replace: true });
         }
       })
       .catch((error) => console.log(error));

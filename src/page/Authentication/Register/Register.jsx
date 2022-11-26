@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import loginLogo from "../../../assets/login.jpg";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
   const { singUpUser, updateUserProfile } = useContext(AuthContext);
@@ -12,7 +13,13 @@ const Register = () => {
   const [userImg, setUserImg] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || "/";
+  const [userEmail, setUserEmail] = useState("");
+  const [token] = useToken(userEmail);
+  if (token) {
+    toast.success("Register Successfull");
+    navigate(from, { replace: true });
+  }
   const registerUser = (data) => {
     const img = data.image[0];
     const formData = new FormData();
@@ -56,17 +63,15 @@ const Register = () => {
           body: JSON.stringify(userInfoForDb),
         })
           .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.acknowledged) {
-              toast.success("Register Successfull");
-              navigate(from, { replace: true });
+          .then((result) => {
+            if (result.acknowledged) {
+              setUserEmail(data.email);
             }
           })
           .catch((error) => {
             console.log(error);
           });
-        
+
         console.log(result.user);
       })
       .catch((error) => {

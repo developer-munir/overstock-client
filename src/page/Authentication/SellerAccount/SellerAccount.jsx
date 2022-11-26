@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import loginLogo from "../../../assets/login.jpg";
 import { AuthContext } from "../../../context/AuthContext/AuthProvider";
+import useToken from "../../../hooks/useToken";
 const SellerAccount = () => {
   const { singUpUser, updateUserProfile } = useContext(AuthContext);
   const [userImg, setUserImg] = useState(null);
@@ -12,6 +13,12 @@ const SellerAccount = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const [userEmail, setUserEmail] = useState("");
+  const [token] = useToken(userEmail);
+  if (token) {
+    toast.success("Register Successfull");
+    navigate(from, { replace: true });
+  }
   const registerSellerAccount = (data) => {
     const img = data.image[0];
     const formData = new FormData();
@@ -55,11 +62,9 @@ const SellerAccount = () => {
           body: JSON.stringify(userInfoForDb),
         })
           .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.acknowledged) {
-              toast.success("Register Successfull");
-              navigate(from, { replace: true });
+          .then((result) => {
+            if (result.acknowledged) {
+              setUserEmail(data.email);
             }
           })
           .catch((error) => {
