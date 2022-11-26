@@ -15,7 +15,7 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [token] = useToken(userEmail);
   if (token) {
-    toast.success("Register Successfull");
+    toast.success("Login Successfull");
     navigate(from, { replace: true });
   }
   const loginUserSubmit = (data) => {
