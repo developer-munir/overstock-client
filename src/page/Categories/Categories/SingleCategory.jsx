@@ -4,7 +4,6 @@ import PrimaryBtn from "../../Shared/Buttons/PrimaryBtn";
 
 import { AiOutlineLaptop } from "react-icons/ai";
 const SingleCategory = ({ categorie }) => {
-  // console.log(categorie)
   return (
     <div>
       <div className=" h-[300px] shadow-xl p-4 border bg-[#03203C] text-color-my">
@@ -15,7 +14,7 @@ const SingleCategory = ({ categorie }) => {
           <span className="ml-3">{categorie?.category_name}</span>
         </div>
         <p className="mb-3 text-color-my">{categorie?.details}</p>
-        <Link to={`/categories/${categorie?.category_id}`}>
+        <Link to={`/categories/${categorie?.category_name}`}>
           <PrimaryBtn>See Products</PrimaryBtn>
         </Link>
       </div>

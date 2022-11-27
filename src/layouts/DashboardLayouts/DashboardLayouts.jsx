@@ -19,7 +19,7 @@ const DashboardLayouts = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content lg:px-4">
           <DashboardNavbar></DashboardNavbar>
-          <div className="min-h-screen p-8">
+          <div className="min-h-screen p-2 lg:p-8">
             <Outlet></Outlet>
           </div>
           <Footer></Footer>

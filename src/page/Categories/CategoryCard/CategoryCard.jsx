@@ -25,7 +25,7 @@ const CategoryCard = ({ product }) => {
   return (
     <div className=" w-96 mx-auto shadow-xl">
       <figure>
-        <img src={picture} alt="" className="" />
+        <img src={picture} alt="" className="h-[200px] w-full" />
       </figure>
       <div className="card-body ">
         <h2 className="card-title">{title}</h2>
@@ -46,7 +46,7 @@ const CategoryCard = ({ product }) => {
         </div>
         <div className="font-mono text-zinc-600">
           <h1>Years of use: {Year_of_uses}</h1>
-          <h1>Post Date : 21/11/2022</h1>
+          <h1>Post Date : {the_time_it_posted}</h1>
         </div>
         <div className="card-actions mt-3">
           <BookingModal title={title} price={resale_price}></BookingModal>
