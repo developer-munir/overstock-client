@@ -25,7 +25,7 @@ const Categories = () => {
             categorie={categorie}
           ></SingleCategory>
         ))}
-      </div>
+    </div>
     </div>
   );
 };

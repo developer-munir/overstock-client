@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 
-const BookingModal = ({ title, price }) => {
+const BookingModal = ({ title, price,picture }) => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const registerUser = (data) => {
@@ -15,6 +15,8 @@ const BookingModal = ({ title, price }) => {
       price,
       itemName: title,
       number,
+      picture,
+      title,
       location,
     };
     fetch("http://localhost:5000/bookings", {

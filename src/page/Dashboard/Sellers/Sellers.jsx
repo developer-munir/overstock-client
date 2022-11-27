@@ -62,10 +62,6 @@ const Sellers = () => {
             </div>
             <div className="border p-2">
               {user?.role}
-              <br />
-              <span className="badge badge-ghost badge-sm">
-                Desktop Support Technician
-              </span>
             </div>
             <div className="border p-2">
               <button

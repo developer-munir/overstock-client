@@ -43,11 +43,17 @@ const CategoryCard = ({ product }) => {
           </small>
         </div>
         <div className="font-mono text-zinc-600">
-          <h1>Years of use: {year_of_purchase ? year_of_purchase : '1 year+'}</h1>
+          <h1>
+            Years of use: {year_of_purchase ? year_of_purchase : "1 year+"}
+          </h1>
           <h1>Post Date : {the_time_it_posted}</h1>
         </div>
         <div className="card-actions mt-3">
-          <BookingModal title={title} price={resale_price}></BookingModal>
+          <BookingModal
+            title={title}
+            picture={picture}
+            price={resale_price}
+          ></BookingModal>
           <label
             htmlFor="booking-modal"
             className="text-color-my bg-[#03203C] py-3 px-6 font-semibold hover:bg-red-400"
