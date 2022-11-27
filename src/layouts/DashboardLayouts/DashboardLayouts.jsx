@@ -48,6 +48,9 @@ const DashboardLayouts = () => {
                 <li>
                   <Link to="/dashboard/addproduct">Add a product</Link>
                 </li>
+                <li>
+                  <Link to="/dashboard/myproduct">My Products</Link>
+                </li>
               </>
             )}
             {isBuyer && (

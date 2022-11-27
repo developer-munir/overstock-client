@@ -7,6 +7,7 @@ const auth = getAuth(app);
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState();
+    console.log(user);
     const [loader, setLoader] = useState(true);
     const singUpUser = (email, password) => {
         setLoader(true);

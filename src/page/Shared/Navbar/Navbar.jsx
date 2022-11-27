@@ -15,7 +15,6 @@ const Navbar = () => {
       <li className="hover:bg-red-400 hover:text-[#CAD5E2]">
         <Link to="/">Home</Link>
       </li>
-
       {user?.uid ? (
         <>
           <li className="hover:bg-red-400 hover:text-[#CAD5E2]">

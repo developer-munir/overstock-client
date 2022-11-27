@@ -80,15 +80,34 @@ const Register = () => {
         toast.error(error.message);
       });
   };
+  const provider = new GoogleAuthProvider();
   const handleGoogleLogin = () => {
-    const provider = new GoogleAuthProvider();
     googleUser(provider)
-      .then(result => {
+      .then((result) => {
         const user = result.user;
-        setUserEmail(user?.email);
+        const userInfoForDb = {
+          name: user?.displayName,
+          email: user?.email,
+          image: user?.photoURL,
+          role: "buyer",
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfoForDb),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setUserEmail(user?.email);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
-    .catch(error => toast.error(error))
-  }
+      .catch((error) => toast.error(error));
+  };
   return (
     <div className="grid md:grid-cols-2">
       <div>
