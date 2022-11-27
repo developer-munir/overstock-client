@@ -32,6 +32,15 @@ const DashboardLayouts = () => {
                 <li>
                   <Link to="/dashboard/users">All sellers</Link>
                 </li>
+                <li>
+                  <Link to="/dashboard/buyers">Buyers</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/sellers">Sellers</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/reported">Reported Items</Link>
+                </li>
               </>
             )}
             {isSeller && (

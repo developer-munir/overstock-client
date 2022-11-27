@@ -9,6 +9,8 @@ import AddAProduct from "../../page/Dashboard/AddAProduct/AddAProduct";
 import Buyers from "../../page/Dashboard/Buyers/Buyers";
 import Dashboard from "../../page/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../page/Dashboard/MyOrders/MyOrders";
+import ReportedItems from "../../page/Dashboard/ReportedItems/ReportedItems";
+import Sellers from "../../page/Dashboard/Sellers/Sellers";
 import Users from "../../page/Dashboard/Users/Users";
 import Error from "../../page/Error/Error";
 import Home from "../../page/Home/Home/Home";
@@ -61,9 +63,9 @@ export const route = createBrowserRouter([
     errorElement: <Error></Error>,
     children: [
       {
-        path: '/dashboard',
-        element:<Dashboard></Dashboard>
-    },
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+      },
       {
         path: "/dashboard/users",
         element: (
@@ -73,9 +75,33 @@ export const route = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/buyers",
+        element: (
+          <AdminRouter>
+            <Buyers></Buyers>
+          </AdminRouter>
+        ),
+      },
+      {
+        path: "/dashboard/sellers",
+        element: (
+          <AdminRouter>
+            <Sellers></Sellers>
+          </AdminRouter>
+        ),
+      },
+      {
+        path: "/dashboard/reported",
+        element: (
+          <AdminRouter>
+            <ReportedItems></ReportedItems>
+          </AdminRouter>
+        ),
+      },
+      {
         path: "/dashboard/myorders",
         element: (
-            <MyOrders></MyOrders>
+          <MyOrders></MyOrders>
           // <BuyerRouter>
           // </BuyerRouter>
         ),
@@ -83,7 +109,7 @@ export const route = createBrowserRouter([
       {
         path: "/dashboard/addproduct",
         element: (
-            <AddAProduct></AddAProduct>
+          <AddAProduct></AddAProduct>
           // <SellerRouter>
           // </SellerRouter>
         ),

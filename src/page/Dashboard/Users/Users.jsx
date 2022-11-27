@@ -43,7 +43,10 @@ const Users = () => {
       </div>
 
       {data?.map((user) => (
-        <div className="grid grid-cols-2 lg:grid-cols-3 text-center my-3 shadow-lg" key={user?._id}>
+        <div
+          className="grid grid-cols-2 lg:grid-cols-3 text-center my-3 shadow-lg"
+          key={user?._id}
+        >
           <div className="border p-2">
             <div className="flex items-center space-x-3">
               <div className="avatar">

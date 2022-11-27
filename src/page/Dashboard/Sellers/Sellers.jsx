@@ -1,26 +1,21 @@
-
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Spinner from '../../Shared/Spinner/Spinner';
 
-const Buyers = () => {
-    
-    const { data,isLoading} = useQuery({
-        queryKey:['users/sellers'],
-        queryFn: async () => {
-            const res = await
-                fetch("http://localhost:5000/users/buyers");
-            const data = await res.json()
-            return data;
-        }
-    })
+const Sellers = () => {
+    const { data, isLoading } = useQuery({
+      queryKey: ["users/sellers"],
+      queryFn: async () => {
+        const res = await fetch("http://localhost:5000/users/sellers");
+        const data = await res.json();
+        return data;
+      },
+    });
     if (isLoading) {
-        return <Spinner></Spinner>
+      return <Spinner></Spinner>;
     }
-    console.log(data)
-    const deleteUser = () => {
-        
-    }
+    console.log(data);
+    const deleteUser = () => {};
     return (
       <div className="overflow-x-auto w-full">
         <div className="grid grid-cols-3 text-center">
@@ -74,4 +69,4 @@ const Buyers = () => {
     );
 };
 
-export default Buyers;
+export default Sellers;
