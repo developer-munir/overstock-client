@@ -39,6 +39,7 @@ const MyProducts = () => {
     const itemsInfo = {
       picture: itmes?.picture,
       category_name: itmes?.category_name,
+      sellerName: itmes?.Seller_name,
     };
     fetch("http://localhost:5000/products/advertise", {
       method: "POST",

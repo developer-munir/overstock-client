@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const Advertisement = () => {
   const {
     data: myProduct = [],
-
     refetch,
   } = useQuery({
     queryKey: ["advertise"],
@@ -17,8 +16,8 @@ const Advertisement = () => {
   refetch();
   return (
     <div className="mt-6">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        {myProduct?.map((product) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+              {myProduct?.map((product) => (
           <div
             className="border shadow-lg rounded-sm text-center"
             key={product?._id}
@@ -30,7 +29,6 @@ const Advertisement = () => {
               <button className=" uppercase my-6 bg-yellow-400 p-2 rounded-xl">
                 Shop now
               </button>
-              <div className="badge badge-secondary ml-2">NEW</div>
             </Link>
           </div>
         ))}

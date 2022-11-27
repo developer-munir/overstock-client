@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const Sellers = () => {
-    const { data, isLoading } = useQuery({
+    const { data, isLoading, refetch } = useQuery({
       queryKey: ["users/sellers"],
       queryFn: async () => {
         const res = await fetch("http://localhost:5000/users/sellers");
@@ -14,8 +15,19 @@ const Sellers = () => {
     if (isLoading) {
       return <Spinner></Spinner>;
     }
-    console.log(data);
-    const deleteUser = () => {};
+    const deleteUser = (id, name) => {
+      fetch(`http://localhost:5000/user/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            toast.success(`delete suceessfully ${name}`);
+            refetch();
+          }
+        })
+        .catch((error) => console.log(error));
+    };
     return (
       <div className="overflow-x-auto w-full">
         <div className="grid grid-cols-3 text-center">
@@ -58,7 +70,7 @@ const Sellers = () => {
             <div className="border p-2">
               <button
                 className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400"
-                onClick={() => deleteUser(user?._id)}
+                onClick={() => deleteUser(user?._id,user?.name)}
               >
                 Delete User
               </button>
