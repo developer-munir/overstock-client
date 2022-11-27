@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import PrimaryBtn from "../../Shared/Buttons/PrimaryBtn";
+import React from "react";
 
-import { GrStatusGood, GrStatusCritical } from "react-icons/gr";
+import { GrStatusGood } from "react-icons/gr";
 import BookingModal from "../../BookingModal/BookingModal";
 const CategoryCard = ({ product }) => {
   const {
@@ -11,7 +10,6 @@ const CategoryCard = ({ product }) => {
     year_of_purchase,
     Year_of_uses,
     buying_price,
-    category_id,
     category_name,
     details,
     condition,
@@ -45,7 +43,7 @@ const CategoryCard = ({ product }) => {
           </small>
         </div>
         <div className="font-mono text-zinc-600">
-          <h1>Years of use: {Year_of_uses}</h1>
+          <h1>Years of use: {year_of_purchase ? year_of_purchase : '1 year+'}</h1>
           <h1>Post Date : {the_time_it_posted}</h1>
         </div>
         <div className="card-actions mt-3">
