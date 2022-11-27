@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -8,7 +9,7 @@ import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import useToken from "../../../hooks/useToken";
 
 const Register = () => {
-  const { singUpUser, updateUserProfile } = useContext(AuthContext);
+  const { singUpUser, updateUserProfile, googleUser } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const [userImg, setUserImg] = useState(null);
   const navigate = useNavigate();
@@ -79,6 +80,15 @@ const Register = () => {
         toast.error(error.message);
       });
   };
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    googleUser(provider)
+      .then(result => {
+        const user = result.user;
+        setUserEmail(user?.email);
+      })
+    .catch(error => toast.error(error))
+  }
   return (
     <div className="grid md:grid-cols-2">
       <div>
@@ -148,7 +158,10 @@ const Register = () => {
             </div>
           </form>
           <div className=" mb-6 gap-2">
-            <button className="bg-[#03203C] text-color-my py-3 px-6 mr-6 ml-8">
+            <button
+              className="bg-[#03203C] text-color-my py-3 px-6 mr-6 ml-8"
+              onClick={handleGoogleLogin}
+            >
               Google Login
             </button>
             <Link to="/selleraccount">
