@@ -4,7 +4,7 @@ import PrimaryBtn from "../Shared/Buttons/PrimaryBtn";
 const Benifit = () => {
   return (
     <div>
-      <div className=" grid md:grid-cols-2 shadow-xl">
+      <div className=" grid  lg:grid-cols-2 shadow-xl">
         <div>
           <img
             src="https://images.pexels.com/photos/840996/pexels-photo-840996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

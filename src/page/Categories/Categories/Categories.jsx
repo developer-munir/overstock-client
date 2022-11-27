@@ -18,7 +18,7 @@ const Categories = () => {
   return (
     <div className="px-12">
       <h1 className="text-3xl  uppercase text-[#03203C]  mb-6">All categories</h1>
-      <div className="grid md:grid-cols-3 gap-4 mb-6 text-center ">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 text-center ">
         {categories?.map((categorie) => (
           <SingleCategory
             key={categorie?._id}
