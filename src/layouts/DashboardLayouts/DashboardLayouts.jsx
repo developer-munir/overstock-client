@@ -30,7 +30,7 @@ const DashboardLayouts = () => {
             {isAdmin && (
               <>
                 <li>
-                  <Link to="/dashboard/users">All sellers</Link>
+                  <Link to="/dashboard/users">All users</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/buyers">Buyers</Link>

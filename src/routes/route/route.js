@@ -4,6 +4,7 @@ import Main from "../../layouts/Main/Main";
 import Login from "../../page/Authentication/Login/Login";
 import Register from "../../page/Authentication/Register/Register";
 import SellerAccount from "../../page/Authentication/SellerAccount/SellerAccount";
+import Blog from "../../page/Blog/Blog";
 import CategoryProducts from "../../page/Categories/CategoryProducts/CategoryProducts";
 import AddAProduct from "../../page/Dashboard/AddAProduct/AddAProduct";
 import Buyers from "../../page/Dashboard/Buyers/Buyers";
@@ -29,6 +30,10 @@ export const route = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/blog",
+        element:<Blog></Blog>
       },
       {
         path: "/login",

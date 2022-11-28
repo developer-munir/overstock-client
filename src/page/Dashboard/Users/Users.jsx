@@ -28,9 +28,22 @@ const Users = () => {
       })
       .catch((error) => console.log(error));
   };
+  const handleVerifyUser = (id) => {
+    fetch(`https://y-developer-munir.vercel.app/users/verify/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          toast.success("verifed successfully");
+          refetch();
+        }
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="overflow-x-auto w-full">
-      <div className="grid grid-cols-3 text-center">
+      <div className="grid grid-cols-4 text-center">
         <div className="border p-2">
           <h1>Users Info</h1>
         </div>
@@ -40,11 +53,14 @@ const Users = () => {
         <div className="border p-2">
           <h1>Admin Role</h1>
         </div>
+        <div className="border p-2">
+          <h1>Admin Role</h1>
+        </div>
       </div>
 
       {data?.map((user) => (
         <div
-          className="grid grid-cols-2 lg:grid-cols-3 text-center my-3 shadow-lg"
+          className="grid grid-cols-2 lg:grid-cols-4 text-center my-3 shadow-lg"
           key={user?._id}
         >
           <div className="border p-2">
@@ -63,15 +79,27 @@ const Users = () => {
           <div className="border p-2">{user?.role}</div>
           <div className="border p-2">
             {user?.role === "admin" ? (
-              <button className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400">
-                Remove Admin{" "}
-              </button>
+              ""
             ) : (
               <button
                 className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400"
                 onClick={() => handleMakeAdmin(user?._id)}
               >
                 Make Admin
+              </button>
+            )}
+          </div>
+          <div className="border p-2">
+            {user?.isVerifyed === "verifyed" ? (
+              <button className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400">
+                Verifyed
+              </button>
+            ) : (
+              <button
+                className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400"
+                onClick={() => handleVerifyUser(user?._id)}
+              >
+                Verify User
               </button>
             )}
           </div>

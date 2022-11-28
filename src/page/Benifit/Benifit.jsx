@@ -1,5 +1,6 @@
 import React from "react";
 import { GrStatusGood } from "react-icons/gr";
+import { Link } from "react-router-dom";
 import PrimaryBtn from "../Shared/Buttons/PrimaryBtn";
 const Benifit = () => {
   return (
@@ -59,7 +60,9 @@ const Benifit = () => {
               </span>
             </div>
           </div>
-          <PrimaryBtn>Book Apoinment</PrimaryBtn>
+          <Link to='/blog'>
+            <PrimaryBtn>See Blogs</PrimaryBtn>
+          </Link>
         </div>
       </div>
     </div>

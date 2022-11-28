@@ -8,7 +8,7 @@ import { AuthContext } from "../../../context/AuthContext/AuthProvider";
 import useToken from "../../../hooks/useToken";
 
 const Login = () => {
-  const { loginUser, googleUser } = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,15 +40,7 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
-  const handleGoogleLogin = () => {
-    const provider = new GoogleAuthProvider();
-    googleUser(provider)
-      .then((result) => {
-        const user = result.user;
-        setUserEmail(user?.email);
-      })
-      .catch((error) => toast.error(error));
-  };
+
   return (
     <div className="grid md:grid-cols-2">
       <div>
@@ -91,12 +83,6 @@ const Login = () => {
             </div>
           </div>
         </form>
-        <button
-          className="bg-[#03203C] text-color-my py-3 px-6 mr-6 ml-8"
-          onClick={handleGoogleLogin}
-        >
-          Google Login
-        </button>
       </div>
     </div>
   );
