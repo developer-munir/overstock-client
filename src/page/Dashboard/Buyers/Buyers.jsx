@@ -7,7 +7,7 @@ const Buyers = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["users/sellers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users/buyers");
+      const res = await fetch("https://y-gamma-two.vercel.app/users/buyers");
       const data = await res.json();
       return data;
     },
@@ -16,7 +16,7 @@ const Buyers = () => {
     return <Spinner></Spinner>;
   }
   const deleteUser = (id, name) => {
-    fetch(`http://localhost:5000/user/${id}`, {
+    fetch(`https://y-gamma-two.vercel.app/user/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -60,10 +60,7 @@ const Buyers = () => {
               </div>
             </div>
           </div>
-          <div className="border p-2">
-            {user?.role}
-            
-          </div>
+          <div className="border p-2">{user?.role}</div>
           <div className="border p-2">
             <button
               className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400"

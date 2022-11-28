@@ -6,7 +6,7 @@ const Users = () => {
   const { data, refetch } = useQuery({
     queryKey: [],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users", {
+      const res = await fetch("https://y-gamma-two.vercel.app/users", {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -16,7 +16,7 @@ const Users = () => {
     },
   });
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://y-gamma-two.vercel.app/users/admin/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -60,10 +60,7 @@ const Users = () => {
               </div>
             </div>
           </div>
-          <div className="border p-2">
-            {user?.role}
-            
-          </div>
+          <div className="border p-2">{user?.role}</div>
           <div className="border p-2">
             {user?.role === "admin" ? (
               <button className="hover:text-[#cad5e2] bg-[#cad5e2] text-[#03203C] py-3 px-6 font-semibold hover:bg-red-400">

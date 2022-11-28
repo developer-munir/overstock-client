@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthContext/AuthProvider";
 
-const BookingModal = ({ title, price,picture }) => {
+const BookingModal = ({ title, price, picture }) => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const registerUser = (data) => {
@@ -19,8 +19,8 @@ const BookingModal = ({ title, price,picture }) => {
       title,
       location,
     };
-    fetch("http://localhost:5000/bookings", {
-      method: 'POST',
+    fetch("https://y-gamma-two.vercel.app/bookings", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -127,8 +127,7 @@ const BookingModal = ({ title, price,picture }) => {
                       htmlFor="booking-modal"
                       className="text-color-my bg-color-my py-3 px-6 font-semibold hover:bg-red-400"
                     >
-
-                    Submit
+                      Submit
                     </label>
                   </button>
                 </div>

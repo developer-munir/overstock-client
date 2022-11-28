@@ -31,11 +31,11 @@ const Login = () => {
       });
   };
   const getAccessToken = (email) => {
-    fetch(`http://localhost:5000/jwt?email=${email}`)
+    fetch(`https://y-gamma-two.vercel.app/jwt?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.accessToken) {
-          localStorage.setItem('accessToken', data.accessToken);
+          localStorage.setItem("accessToken", data.accessToken);
         }
       })
       .catch((error) => console.log(error));

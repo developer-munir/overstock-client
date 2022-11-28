@@ -12,7 +12,7 @@ const MyOrders = () => {
     queryKey: ["mybooking"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/bookings/mybooking/${user?.email}`
+        `https://y-gamma-two.vercel.app/bookings/mybooking/${user?.email}`
       );
       const data = await res.json();
       return data;
@@ -20,10 +20,12 @@ const MyOrders = () => {
   });
   if (isLoading) {
     return <Spinner></Spinner>;
-    }
+  }
   return (
-      <div>
-          <h1 className="text-3xl uppercase my-3 text-center border-b">My Orders</h1>
+    <div>
+      <h1 className="text-3xl uppercase my-3 text-center border-b">
+        My Orders
+      </h1>
       <div className="grid md:grid-cols-2 gap-4">
         {data?.map((order) => (
           <div className="w-full shadow-xl" key={order?._id}>

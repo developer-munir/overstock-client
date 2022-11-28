@@ -50,7 +50,9 @@ export const route = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/category/${params?.name}`),
+          fetch(
+            `https://y-gamma-two.vercel.app/products/category/${params?.name}`
+          ),
       },
     ],
   },

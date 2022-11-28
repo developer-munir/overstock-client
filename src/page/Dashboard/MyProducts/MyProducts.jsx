@@ -14,7 +14,7 @@ const MyProducts = () => {
     queryKey: ["products/myproducts"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/products/myproducts/${user?.displayName}`
+        `https://y-gamma-two.vercel.app/products/myproducts/${user?.displayName}`
       );
       const data = res.json();
       return data;
@@ -24,7 +24,7 @@ const MyProducts = () => {
     return <Spinner></Spinner>;
   }
   const deleteMyProduct = (id) => {
-    fetch(`http://localhost:5000/products/myproducts/${id}`, {
+    fetch(`https://y-gamma-two.vercel.app/products/myproducts/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const MyProducts = () => {
       category_name: itmes?.category_name,
       sellerName: itmes?.Seller_name,
     };
-    fetch("http://localhost:5000/products/advertise", {
+    fetch("https://y-gamma-two.vercel.app/products/advertise", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,7 +54,7 @@ const MyProducts = () => {
         console.log(data);
       })
       .catch((error) => console.log(error));
-  }
+  };
   return (
     <div>
       <h1 className="text-3xl uppercase text-center border-b py-3 mb-3">
@@ -76,7 +76,10 @@ const MyProducts = () => {
                 >
                   Delete
                 </button>
-                <button className="bg-red-800 text-white px-2 py- rounded-lg" onClick={()=>handleAdvertise(product)}>
+                <button
+                  className="bg-red-800 text-white px-2 py- rounded-lg"
+                  onClick={() => handleAdvertise(product)}
+                >
                   Advertise
                 </button>
               </div>

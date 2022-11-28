@@ -23,7 +23,7 @@ const AddAProduct = () => {
       .then((img) => {
         const image = img.data?.image?.url;
         const categories = {
-          productName :data?.productname,
+          productName: data?.productname,
           Seller_name: user?.displayName,
           category_name: data?.category,
           condition: data?.condition,
@@ -35,24 +35,23 @@ const AddAProduct = () => {
           the_time_it_posted: data?.date,
           picture: image,
           location: data?.location,
-          number:data?.number
+          number: data?.number,
         };
-        fetch("http://localhost:5000/products", {
-          method: 'POST',
+        fetch("https://y-gamma-two.vercel.app/products", {
+          method: "POST",
           headers: {
-            'content-type':'application/json'
-          }
-          ,
-          body:JSON.stringify(categories)
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(categories),
         })
-        .then(res => res.json())
-          .then(data => {
+          .then((res) => res.json())
+          .then((data) => {
             if (data?.acknowledged) {
-              toast.success('Product add successfully');
+              toast.success("Product add successfully");
               navigate("/dashboard/myproduct");
-            } 
+            }
           })
-        .catch(error => console.log(error))
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
         console.log(error);

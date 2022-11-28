@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 const useBuyer = (email) => {
-    const [isBuyer, setIsBuyer] = useState(false);
-    const [buyerLoading,setBuyerLoading] = useState(true);
+  const [isBuyer, setIsBuyer] = useState(false);
+  const [buyerLoading, setBuyerLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/buyer/${email}`)
+      fetch(`https://y-gamma-two.vercel.app/users/buyer/${email}`)
         .then((res) => res.json())
-          .then((data) => {
+        .then((data) => {
           setIsBuyer(data.isBuyer);
           setBuyerLoading(false);
         });

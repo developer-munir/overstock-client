@@ -54,7 +54,7 @@ const SellerAccount = () => {
           .catch((error) => {
             console.log(error.message);
           });
-        fetch("http://localhost:5000/users", {
+        fetch("https://y-gamma-two.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
